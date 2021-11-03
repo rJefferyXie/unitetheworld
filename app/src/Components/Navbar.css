@@ -1,0 +1,40 @@
+.App-navbar {
+    position: fixed; 
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 60px;
+    z-index: 999; 
+    font-size: 1.2rem;
+}
+
+.App-logo {
+    margin: auto 0px;
+    cursor: pointer;
+    color: aliceblue;
+    font-size: 2rem;
+}
+
+.App-navbar-container {
+    justify-content: space-evenly;
+}
+
+.App-navbar-menu {
+    list-style: none;
+}
+
+.App-navbar-item {
+    border-radius: 20px; 
+    height: 60px; 
+    align-items: center;
+}
+
+.App-navbar-link {
+    width: 100px;
+    text-align: center;
+    color: aliceblue;
+}
+
+.App-navbar-item:hover {
+    background-color: rgba(204, 204, 204, 0.4);
+    cursor: pointer;
+}
