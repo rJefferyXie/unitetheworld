@@ -38,3 +38,11 @@
     background-color: rgba(204, 204, 204, 0.4);
     cursor: pointer;
 }
+
+a {
+    text-decoration: none;
+}
+
+.active {
+    background-color: aquamarine;
+}
