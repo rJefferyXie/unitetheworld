@@ -25,7 +25,7 @@ function App() {
           <Route path="/contact" element={<Contact/>}></Route>
           <Route path="/account" element={<Account/>}></Route>
           <Route path="/create" element={<CreateAccount/>}></Route>
-          <Route path="/edit:id" element={<EditAccount/>}></Route>
+          <Route path="/edit/:id" element={<EditAccount/>}></Route>
           <Route path="/summary" element={<AccountList/>}></Route>
         </Routes>
       </Router>

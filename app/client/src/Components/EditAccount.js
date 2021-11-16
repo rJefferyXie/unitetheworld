@@ -13,6 +13,7 @@ export default class EditAccount extends Component {
     this.onChangePersonPosition = this.onChangePersonPosition.bind(this);
     this.onChangePersonLevel = this.onChangePersonLevel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.propID = window.location.pathname.replace("/edit/", "");
  
     this.state = {
       person_name: "",
@@ -24,7 +25,7 @@ export default class EditAccount extends Component {
   // This will get the record based on the id from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/record/" + this.props.match.params.id)
+      .get("http://localhost:5000/record/" + this.propID)
       .then((response) => {
         this.setState({
           person_name: response.data.person_name,
@@ -69,18 +70,18 @@ export default class EditAccount extends Component {
     // This will send a post request to update the data in the database.
     axios
       .post(
-        "http://localhost:5000/update/" + this.props.match.params.id,
+        "http://localhost:5000/update/" + this.propID,
         newEditedperson
       )
-      .then((res) => console.log(res.data));
+      .then((res) => console.log(res.data))
+      .then(document.location.pathname = "/summary");
  
-    this.props.history.push("/");
   }
  
   // This following section will display the update-form that takes the input from the user to update the data.
   render() {
     return (
-      <div>
+      <div className="Edit">
         <h3 align="center">Update Record</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
