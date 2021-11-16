@@ -25,6 +25,9 @@ const Navbar = (props) => {
                     <li className="App-navbar-item flex">
                         <a href="/account" onClick={() => switchPage('account')}  className="App-navbar-link account">Account</a>
                     </li>
+                    <li className="App-navbar-item flex">
+                        <a href="/summary" onClick={() => switchPage('summary')}  className="App-navbar-link summary">Summary</a>
+                    </li>
                 </ul>
             </div>
         </nav>
