@@ -53,7 +53,7 @@ export default class CreateAccount extends Component {
     axios
       .post("http://localhost:5000/record/add", newperson)
       .then((res) => console.log(res.data))
-      .then(document.location.pathname = "");
+      .then(document.location.pathname = "/summary");
  
     // We will empty the state after posting the data to the database
     this.setState({

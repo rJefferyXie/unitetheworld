@@ -12,14 +12,7 @@ const Record = (props) => (
     <td>{props.record.person_level}</td>
     <td>
       <Link to={"/edit/" + props.record._id}>Edit</Link> |
-      <a
-        href="/"
-        onClick={() => {
-          props.deleteRecord(props.record._id);
-        }}
-      >
-        Delete
-      </a>
+      <a href="/" onClick={() => { props.deleteRecord(props.record._id); }}>Delete</a>
     </td>
   </tr>
 );
@@ -48,7 +41,7 @@ export default class AccountList extends Component {
   deleteRecord(id) {
     axios.delete("http://localhost:5000/" + id).then((response) => {
       console.log(response.data);
-    });
+    }).then(document.location.pathname = "/summary");
 
     this.setState({
       record: this.state.records.filter((el) => el._id !== id),
