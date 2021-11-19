@@ -30,6 +30,7 @@
     border-radius: 16px;
     outline: none;
     text-decoration: none;
-    color: initial;
-    background-color: rgb(147, 164, 240);
+    color: aliceblue;
+    text-align: center;
+    background-color: rgb(34, 100, 199);
 }

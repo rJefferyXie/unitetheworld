@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 const Record = (props) => (
   <tr>
-    <td>{props.record.person_name}</td>
-    <td>{props.record.person_position}</td>
-    <td>{props.record.person_level}</td>
+    <td>{props.record.account_username}</td>
+    <td>{props.record.account_email}</td>
+    <td>{props.record.account_password}</td>
     <td>
       <Link to={"/edit/" + props.record._id}>Edit</Link> |
       <a href="/" onClick={() => { props.deleteRecord(props.record._id); }}>Delete</a>
@@ -64,15 +64,15 @@ export default class AccountList extends Component {
   // This following section will display the table with the records of individuals.
   render() {
     return (
-      <div className="AccountList">
-        <h3>Record List</h3>
-        <table className="table table-striped" style={{ marginTop: 20 }}>
+      <div className="AccountList flex">
+        <h3>Account List</h3>
+        <table className="AccountList-table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Level</th>
-              <th>Action</th>
+              <th className="table-item">Username</th>
+              <th className="table-item">Email Address</th>
+              <th className="table-item">Password</th>
+              <th className="table-item">Action</th>
             </tr>
           </thead>
           <tbody>{this.accountList()}</tbody>

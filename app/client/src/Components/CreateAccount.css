@@ -3,3 +3,11 @@
     height: 100vh;
     flex-direction: column;
 }
+
+.Create-form {
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(196, 233, 255);
+    border-radius: 16px;
+}

@@ -3,3 +3,9 @@
     height: 100vh;
     flex-direction: column;
 }
+
+.AccountList-table {
+    width: 50%;
+    text-align: center;
+    margin-top: 20px;
+}
