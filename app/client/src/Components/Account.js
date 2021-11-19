@@ -3,7 +3,7 @@ import './Account.css';
 
 const Account = (props) => {
     return (
-        <div className="Account">Account</div>
+        <div className="Account flex">Account</div>
     );
 }
 

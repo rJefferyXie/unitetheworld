@@ -7,7 +7,10 @@ const Hero = (props) => {
             <div className="Hero-intro">
                 <div className="Hero-text-container flex">
                     <div className="Hero-text">Everybody should have food on their tables. Help unite the world.</div>
-                    <button className="Hero-button">Learn More</button>
+                    <div className="Hero-button-container flex">
+                        <a href="/about" className="Hero-button learn-more">Learn More</a>
+                        <a href="/account" className="Hero-button get-start">Get Started</a>
+                    </div>
                 </div>
             </div>
             <div className="Hero-donate"></div>

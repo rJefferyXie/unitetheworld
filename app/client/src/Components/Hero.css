@@ -18,8 +18,6 @@
 
 .Hero-text-container {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -37,4 +35,25 @@
     text-shadow: 
         0 0 2px rgba(255,255,255,0.8), 
         2px 2px 2px rgba(0,0,0,0.4);
+}
+
+.Hero-button-container {
+    width: min(80%, 1100px);
+}
+
+.Hero-button {
+    padding: 2vh 5vh 2vh 5vh;
+    margin: 10px;
+    border-radius: 16px;
+    outline: none;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.learn-more {
+    background-color: rgb(125, 187, 241);
+}
+
+.get-start {
+    background-color: rgb(70, 223, 146);
 }

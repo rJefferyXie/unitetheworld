@@ -81,7 +81,7 @@ export default class EditAccount extends Component {
   // This following section will display the update-form that takes the input from the user to update the data.
   render() {
     return (
-      <div className="Edit">
+      <div className="Edit flex">
         <h3 align="center">Update Record</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">

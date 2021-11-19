@@ -1,15 +1,9 @@
 .Donation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100vw;
     height: 100vh;
 }
 
 .Donate-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100%;
     width: 100%;
 }
