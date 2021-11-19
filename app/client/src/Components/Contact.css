@@ -2,3 +2,34 @@
     width: 100vw;
     height: 100vh;
 }
+
+.Contact-form {
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(196, 233, 255);
+    border-radius: 16px;
+}
+
+.Form-item {
+    margin: 10px;
+    padding: 20px 30px 20px 30px;
+    border-radius: 16px;
+    border: 1px solid white;
+    outline: none;
+}
+
+.Form-message {
+    width: 430px;
+    resize: none;
+}
+
+.Form-button {
+    padding: 2vh 5vh 2vh 5vh;
+    margin: 20px 10px 10px 10px;
+    border-radius: 16px;
+    outline: none;
+    text-decoration: none;
+    color: initial;
+    background-color: rgb(147, 164, 240);
+}
