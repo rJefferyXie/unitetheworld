@@ -13,8 +13,6 @@ const Hero = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="Hero-donate"></div>
-            {/* <div className="Hero-contact-container"></div> */}
         </div>
     );
 };
