@@ -7,6 +7,7 @@ import Donation from './Components/Donation';
 import Contact from './Components/Contact';
 import Account from './Components/Account';
 import CreateAccount from './Components/CreateAccount';
+import LoginAccount from './Components/LoginAccount';
 import EditAccount from './Components/EditAccount';
 import AccountList from './Components/AccountList';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contact" element={<Contact/>}></Route>
           <Route path="/account" element={<Account/>}></Route>
           <Route path="/create" element={<CreateAccount/>}></Route>
+          <Route path="/login" element={<LoginAccount/>}></Route>
           <Route path="/edit/:id" element={<EditAccount/>}></Route>
           <Route path="/summary" element={<AccountList/>}></Route>
         </Routes>
