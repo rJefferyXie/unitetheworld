@@ -1,5 +1,5 @@
 .Hero-intro {
-    height: calc(100vh);
+    height: 100vh;
     background-image: url("../images/hero.jpg");
     background-attachment: fixed;
     background-position: center;

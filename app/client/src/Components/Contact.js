@@ -23,6 +23,8 @@ const Contact = (props) => {
         alert(JSON.stringify(data))
     }
 
+    const cancel = () => { document.location.pathname = "/summary"; }
+
     return (
         <div className="Contact flex">
             <form onSubmit={submit} className="Contact-form flex">
@@ -35,7 +37,10 @@ const Contact = (props) => {
                     <input className="Form-item" type="text" ref={phoneRef} placeholder="Phone (Optional)"tabIndex="4"></input>
                 </div>
                 <textarea className="Form-item Form-message" type="text" ref={messageRef} placeholder="Type your message here" tabIndex="5"></textarea>
-                <button className="Form-item Form-button" type="submit">Send Message</button>
+                <div className="Button-container flex">
+                    <button className="Form-item Form-button" type="button"onClick={cancel}>Cancel</button>
+                    <button className="Form-item Form-button" type="submit">Send Message</button>
+                </div>
             </form>
         </div>
     );

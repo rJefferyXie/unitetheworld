@@ -3,3 +3,19 @@
     height: 100vh;
     flex-direction: column;
 }
+
+.Edit-form {
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(196, 233, 255);
+    border-radius: 16px;
+}
+
+.Form-item {
+    margin: 10px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 16px;
+    border: 1px solid white;
+    outline: none;
+}

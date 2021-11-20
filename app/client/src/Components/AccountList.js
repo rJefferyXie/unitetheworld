@@ -5,14 +5,14 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-const Record = (props) => (
+const Account = (props) => (
   <tr>
-    <td>{props.record.account_username}</td>
-    <td>{props.record.account_email}</td>
-    <td>{props.record.account_password}</td>
+    <td>{props.account.username}</td>
+    <td>{props.account.email}</td>
+    <td>{props.account.password}</td>
     <td>
-      <Link to={"/edit/" + props.record._id}>Edit</Link> |
-      <a href="/" onClick={() => { props.deleteRecord(props.record._id); }}>Delete</a>
+      <Link to={"/edit/" + props.account._id}>Edit</Link> |
+      <a href="/" onClick={() => { props.deleteaccount(props.account._id); }}>Delete</a>
     </td>
   </tr>
 );
@@ -21,47 +21,51 @@ export default class AccountList extends Component {
   // This is the constructor that shall store our data retrieved from the database
   constructor(props) {
     super(props);
-    this.deleteRecord = this.deleteRecord.bind(this);
-    this.state = { records: [] };
+    this.deleteaccount = this.deleteaccount.bind(this);
+    this.state = { accounts: [] };
   }
 
   // This method will get the data from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/record/")
+      .get("http://localhost:5000/account/")
       .then((response) => {
-        this.setState({ records: response.data });
+        this.setState({ accounts: response.data });
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  // This method will delete a record based on the method
-  deleteRecord(id) {
+  // This method will delete a account based on the method
+  deleteaccount(id) {
     axios.delete("http://localhost:5000/" + id).then((response) => {
       console.log(response.data);
     }).then(document.location.pathname = "/summary");
 
     this.setState({
-      record: this.state.records.filter((el) => el._id !== id),
+      account: this.state.accounts.filter((el) => el._id !== id),
     });
   }
 
   // This method will map out the users on the table
   accountList() {
-    return this.state.records.map((currentrecord) => {
+    return this.state.accounts.map((currentaccount) => {
       return (
-        <Record
-          record={currentrecord}
-          deleteRecord={this.deleteRecord}
-          key={currentrecord._id}
+        <Account
+          account={currentaccount}
+          deleteaccount={this.deleteaccount}
+          key={currentaccount._id}
         />
       );
     });
   }
 
-  // This following section will display the table with the records of individuals.
+  showInfo() {
+    axios.get("http://localhost:5000/account").then((res) => console.log(res.data));
+  }
+
+  // This following section will display the table with the accounts of individuals.
   render() {
     return (
       <div className="AccountList flex">
@@ -78,6 +82,7 @@ export default class AccountList extends Component {
           <tbody>{this.accountList()}</tbody>
         </table>
         <a href="/create">Create Account</a>
+        <button className="Form-item Form-button" onClick={this.showInfo}>Show Info</button>
       </div>
     );
   }

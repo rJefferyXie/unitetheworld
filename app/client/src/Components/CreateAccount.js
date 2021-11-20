@@ -1,6 +1,7 @@
 import '../App.css';
 import './CreateAccount.css';
 
+import {validEmail, validPassword} from '../regex.js'
 import React, { Component } from "react";
 import axios from 'axios';
  
@@ -8,58 +9,86 @@ export default class CreateAccount extends Component {
   constructor(props) {
     super(props);
  
-    this.onChangeaccountName = this.onChangeaccountName.bind(this);
-    this.onChangeaccountEmail = this.onChangeaccountEmail.bind(this);
-    this.onChangeaccountPassword = this.onChangeaccountPassword.bind(this);
+    this.onChangeAccountName = this.onChangeAccountName.bind(this);
+    this.onChangeAccountEmail = this.onChangeAccountEmail.bind(this);
+    this.onChangeAccountPassword = this.onChangeAccountPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
  
     this.state = {
-      account_username: "",
-      account_email: "",
-      account_password: "",
+      username: "",
+      email: "",
+      password: "",
     };
   }
  
   // These methods will update the state properties.
-  onChangeaccountName(e) {
+  onChangeAccountName(e) {
     this.setState({
-      account_username: e.target.value,
+      username: e.target.value,
     });
   }
  
-  onChangeaccountEmail(e) {
+  onChangeAccountEmail(e) {
     this.setState({
-      account_email: e.target.value,
+      email: e.target.value,
     });
   }
  
-  onChangeaccountPassword(e) {
+  onChangeAccountPassword(e) {
     this.setState({
-      account_password: e.target.value,
+      password: e.target.value,
     });
   }
+
+  emailValidation(email) {
+    if (!validEmail.test(email)) {
+        return false;
+    }
+    return true;
+  }
+
+  passwordValidation(password) {
+    if (!validPassword.test(password)) {
+      return false;
+    }
+    return true;
+  }
+
+  cancel() {
+    document.location.pathname = "/summary";
+  }
  
-// This function will handle the submission.
+  // This function will handle the submission.
   onSubmit(e) {
     e.preventDefault();
  
-    // When post request is sent to the create url, axios will add a new record(newaccount) to the database.
+    // When post request is sent to the create url, axios will add a new account(newaccount) to the database.
     const newaccount = {
-      account_username: this.state.account_username,
-      account_email: this.state.account_email,
-      account_password: this.state.account_password,
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
     };
+
+    if (!this.emailValidation(newaccount.email)) {
+      alert("Email invalid.");
+      return;
+    }
+
+    if (!this.passwordValidation(newaccount.password)) {
+      alert("Password invalid.");
+      return;
+    }
  
     axios
-      .post("http://localhost:5000/record/add", newaccount)
+      .post("http://localhost:5000/account/add", newaccount)
       .then((res) => console.log(res.data))
       .then(document.location.pathname = "/summary");
  
     // We will empty the state after posting the data to the database
     this.setState({
-      account_username: "",
-      account_email: "",
-      account_password: "",
+      username: "",
+      email: "",
+      password: "",
     });
   }
  
@@ -67,12 +96,15 @@ export default class CreateAccount extends Component {
   render() {
     return (
       <div className="Create flex">
-        <h3>Create New Record</h3>
         <form className="Create-form flex" onSubmit={this.onSubmit}>
-          <input className="Form-item" type="text" value={this.state.account_username} placeholder="Username" onChange={this.onChangeaccountName}/>
-          <input className="Form-item" type="text" value={this.state.account_email} placeholder="Email" onChange={this.onChangeaccountEmail}/>
-          <input className="Form-item" type="text" value={this.state.account_password} placeholder="Password" onChange={this.onChangeaccountPassword}/>
-          <button className="Form-item Form-button" type="submit">Create Account</button>
+          <h3>Create New account</h3>
+          <input className="Form-item" type="text" value={this.state.username} placeholder="Username" onChange={this.onChangeAccountName}/>
+          <input className="Form-item" type="text" value={this.state.email} placeholder="Email" onChange={this.onChangeAccountEmail}/>
+          <input className="Form-item" type="text" value={this.state.password} placeholder="Password" onChange={this.onChangeAccountPassword}/>
+          <div className="Button-container flex">
+            <button className="Form-item Form-button" type="reset"onClick={this.cancel}>Cancel</button>
+            <button className="Form-item Form-button" type="submit">Update</button>
+          </div>
         </form>
       </div>
     );
