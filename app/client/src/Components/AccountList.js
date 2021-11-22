@@ -12,7 +12,7 @@ const Account = (props) => (
     <td>{props.account.password}</td>
     <td>
       <Link to={"/edit/" + props.account._id}>Edit</Link> |
-      <a href="/" onClick={() => { props.deleteaccount(props.account._id); }}>Delete</a>
+      <a href="/summary" onClick={() => { props.deleteaccount(props.account._id); }}>Delete</a>
     </td>
   </tr>
 );
@@ -41,7 +41,7 @@ export default class AccountList extends Component {
   deleteaccount(id) {
     axios.delete("http://localhost:5000/" + id).then((response) => {
       console.log(response.data);
-    }).then(document.location.pathname = "/summary");
+    })
 
     this.setState({
       account: this.state.accounts.filter((el) => el._id !== id),

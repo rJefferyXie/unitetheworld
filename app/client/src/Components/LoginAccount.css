@@ -3,13 +3,28 @@
     height: 100vh;
 }
 
+.Login-form {
+    flex-direction: column;
+}
+
 .Login-item {
-    background-color: aliceblue;
+    position: relative;
 }
 
 .Login-input {
     outline: none;
-    border: none;
-    background-color: white;
+    background-color: aliceblue;
     border-radius: 16px;
+    width: 100%;
+    margin: 10px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 16px;
+    border: 1px solid black;
+    outline: none;
+}
+
+.Login-icon {
+    position: absolute;
+    left: 20px;
+    top: 20px;
 }

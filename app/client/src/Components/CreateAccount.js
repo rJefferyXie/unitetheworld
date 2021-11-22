@@ -103,7 +103,7 @@ export default class CreateAccount extends Component {
           <input className="Form-item" type="text" value={this.state.password} placeholder="Password" onChange={this.onChangeAccountPassword}/>
           <div className="Button-container flex">
             <button className="Form-item Form-button" type="reset"onClick={this.cancel}>Cancel</button>
-            <button className="Form-item Form-button" type="submit">Update</button>
+            <button className="Form-item Form-button" type="submit">Create</button>
           </div>
         </form>
       </div>
