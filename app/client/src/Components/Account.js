@@ -1,11 +1,14 @@
 import '../App.css';
 import './Account.css';
 
-const Account = (props) => {
+import Login from './auth/Login';
+
+const Account = () => {
     return (
         <div className="Account flex">
-            <a className="Account-button create-account" href="/register">Create Account</a>
-            <a className="Account-button login-account" href="/login">Sign In</a>
+            <div className="Account-container flex">
+                <Login></Login>
+            </div>
         </div>
     );
 }

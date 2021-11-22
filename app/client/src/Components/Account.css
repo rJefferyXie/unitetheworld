@@ -1,23 +1,15 @@
 .Account {
     width: 100vw;
     height: 100vh;
+    background-color: rgb(247, 247, 247);
 }
 
-.Account-button {
-    padding: 2vh 5vh 2vh 5vh;
-    width: 20%;
-    margin: 20px 10px 10px 10px;
-    border-radius: 16px;
-    text-align: center;
-    outline: none;
-    text-decoration: none;
-    color: aliceblue;
-}
-
-.create-account {
-    background-color: rgb(52, 202, 84);
-}
-
-.login-account {
-    background-color: rgb(34, 100, 199);
+.Account-container {
+    width: 80%;
+    height: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 6px;
 }

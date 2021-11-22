@@ -8,10 +8,14 @@ import {
     USER_LOADING
 } from "./types";
 
+export const getUserSummary = () => {
+    axios.get("/api/users/summary").then(res => console.log(res))
+}
+
 // Register User
 export const registerUser = (userData) => dispatch => {
     axios.post("/api/users/register", userData)
-    .then(res => document.location.pathname = "/login")
+    .then(res => document.location.pathname = "/account")
     .catch(err => 
         dispatch({
             type: GET_ERRORS,

@@ -1,11 +1,19 @@
 .AccountList {
-    width: 100vw;
-    height: calc(100vh - 30px);
     flex-direction: column;
+    
+}
+
+.AccountList-container {
+    flex-direction: column;
+    background-color: white;
 }
 
 .AccountList-table {
-    width: 50%;
+    width: 100%;
     text-align: center;
     margin-top: 20px;
+}
+
+.table-item {
+    width: 100px;
 }

@@ -28,18 +28,19 @@ const Contact = (props) => {
     return (
         <div className="Contact flex">
             <form onSubmit={submit} className="Contact-form flex">
+                <h3>Send us a message</h3>
                 <div className="Name-container">
-                    <input className="Form-item" type="text" ref={firstNameRef} placeholder="First Name" tabIndex="1"></input>
-                    <input className="Form-item" type="text" ref={lastNameRef} placeholder="Last name" tabIndex="2"></input>
+                    <input className="Contact-item" type="text" ref={firstNameRef} placeholder="First Name" tabIndex="1"></input>
+                    <input className="Contact-item" type="text" ref={lastNameRef} placeholder="Last name" tabIndex="2"></input>
                 </div>
                 <div className="Email-phone-container">
-                    <input className="Form-item" type="email" ref={emailRef} placeholder="Email"tabIndex="3"></input>
-                    <input className="Form-item" type="text" ref={phoneRef} placeholder="Phone (Optional)"tabIndex="4"></input>
+                    <input className="Contact-item" type="email" ref={emailRef} placeholder="Email"tabIndex="3"></input>
+                    <input className="Contact-item" type="text" ref={phoneRef} placeholder="Phone (Optional)"tabIndex="4"></input>
                 </div>
-                <textarea className="Form-item Form-message" type="text" ref={messageRef} placeholder="Type your message here" tabIndex="5"></textarea>
+                <textarea className="Contact-item Form-message" type="text" ref={messageRef} placeholder="Type your message here" tabIndex="5"></textarea>
                 <div className="Button-container flex">
-                    <button className="Form-item Form-button" type="button"onClick={cancel}>Cancel</button>
-                    <button className="Form-item Form-button" type="submit">Send Message</button>
+                    <button className="Contact-item Form-button" type="button"onClick={cancel}>Cancel</button>
+                    <button className="Contact-item Form-button" type="submit">Send Message</button>
                 </div>
             </form>
         </div>

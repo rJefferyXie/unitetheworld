@@ -1,0 +1,62 @@
+.Register {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(247, 247, 247);
+}
+
+.Register-form {
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.Register-container {
+    width: 40%;
+    margin: 10px 0px 10px 0px;
+}
+
+.Register-item {
+    position: relative;
+    width: 100%;
+}
+
+.Register-input {
+    outline: none;
+    border-radius: 3px;
+    width: 100%;
+    padding: 10px 30px 10px 30px;
+    border: 1px solid black;
+    margin: 5px 0px 0px 0px;
+}
+
+.Register-icon {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+}
+
+.Register-button {
+    background-color: rgb(52, 202, 84);
+    width: 40%;
+    height: 48px;
+    margin: 10px 0px 20px 0px;
+    border-radius: 3px;
+    font-size: 1rem;
+    color: aliceblue;
+    background-color: rgb(34, 100, 199);
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+.Login-account {
+    text-align: center;
+    outline: none;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}

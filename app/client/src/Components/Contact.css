@@ -1,20 +1,22 @@
 .Contact {
+    flex-direction: column;
     width: 100vw;
-    height: calc(100vh - 30px);
+    height: 100vh;
+    background-color: rgb(247, 247, 247);
 }
 
 .Contact-form {
     flex-direction: column;
     width: 80%;
     height: 80%;
-    background-color: rgb(196, 233, 255);
-    border-radius: 16px;
+    background-color: white;
+    border-radius: 6px;
 }
 
-.Form-item {
+.Contact-item {
     margin: 10px;
     padding: 20px 30px 20px 30px;
-    border-radius: 16px;
+    border-radius: 3px;
     border: 1px solid black;
     outline: none;
 }
@@ -27,7 +29,7 @@
 .Form-button {
     padding: 2vh 5vh 2vh 5vh;
     margin: 20px 10px 10px 10px;
-    border-radius: 16px;
+    border-radius: 3px;
     outline: none;
     text-decoration: none;
     color: aliceblue;

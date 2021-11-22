@@ -1,5 +1,13 @@
 .Dashboard {
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background-color: aqua;
+    background-color: rgb(247, 247, 247);
+}
+
+.Dashboard-container {
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background-color: white;
 }

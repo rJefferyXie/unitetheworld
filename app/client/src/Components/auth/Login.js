@@ -1,12 +1,10 @@
 import '../../App.css';
-// import './LoginAccount.css';
+import './Login.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
@@ -63,17 +61,18 @@ class Login extends Component {
         return (
             <div className="Login flex">
                 <form className="Login-form flex" onSubmit={this.onSubmit}>
-                    <h3>Login</h3>
-                    <div className="Login-email">
+                    <FontAwesomeIcon className="Login-logo" icon={faUserCircle}/>
+                    <h3>Sign In</h3>
+                    <div className="Login-container">
                         <label>Email</label>
                         <div className="Login-item">
                             <input id="email" className={classnames("Login-input", {invalid: errors.email || errors.emailnotfound})} type="email" placeholder="Email" onChange={this.onChange} value={this.state.email} error={errors.email}/>
-                            <FontAwesomeIcon className="Login-icon" icon={faUser}/>
+                            <FontAwesomeIcon className="Login-icon" icon={faEnvelope}/>
                         </div>
                         <span>{errors.email}{errors.emailnotfound}</span>
                     </div>
     
-                    <div className="Login-password">
+                    <div className="Login-container">
                         <label>Password</label>
                         <div className="Login-item">
                             <input id="password" className={classnames("Login-input", {invalid: errors.password || errors.passwordincorrect})} type="password" placeholder="Password" onChange={this.onChange} value={this.state.password} error={errors.password}/>
@@ -82,9 +81,11 @@ class Login extends Component {
                         <span>{errors.password}{errors.passwordincorrect}</span>
                     </div>
     
-                    <div className="Button-container flex">
-                        <button className="Form-item Form-button" type="reset"onClick={this.cancel}>Cancel</button>
-                        <button className="Form-item Form-button" type="submit">Login</button>
+                    <button className="Login-button" type="submit">Login</button>
+
+                    <div>
+                        <label>Not Registered? </label>
+                        <a className="Create-account" href="/register">Create An Account</a>
                     </div>
                 </form>
             </div>

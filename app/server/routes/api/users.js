@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+const keys = require("../../config/keys")
 
 // Load register / login validation
 const validateUserRegister = require("../../validation/register");
@@ -10,6 +10,28 @@ const validateUserLogin = require("../../validation/login");
 
 // Load user model
 const User = require("../../models/User");
+
+// @route GET api/users/summary
+// @desc Get all user accounts
+// @access Private
+router.get("/summary", (req, res) => {
+    User.find({}, (err, users) => {
+        if (err) throw err
+        res.json(users);
+    });
+});
+
+// @route DELETE api/users/:id
+// @desc Delete user account
+// @access Private
+router.delete("/:id", (req, res) => {
+    User.deleteOne({_id: req.params.id}, (err, result) => {
+        if (err) { throw err }
+        console.log("User removed from database.");
+    });
+});
+
+
 
 // @route POST api/users/register
 // @desc Register new user
@@ -25,26 +47,35 @@ router.post("/register", (req, res) => {
     .then(user => {
         if (user) {
             return res.status(400).json({ email: "Email already exists." });
-        } else {
-            const newUser = new User({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
+        }
+        else {
+            User.findOne({ name: req.body.name })
+            .then(user => {
+                if (user) {
+                    return res.status(400).json({ name: "Username already exists. "});
+                }
+                else {
+                    const newUser = new User({
+                        name: req.body.name,
+                        email: req.body.email,
+                        password: req.body.password
+                    });
+                
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if (err) { throw err; }
+                            newUser.password = hash;
+                            newUser.save()
+                            .then(newuser => res.json(newuser))
+                            .then(console.log("New Account Created."))
+                            .catch(err => console.log(err));
+                        });
+                    });
+                }
             });
-
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) { throw err; }
-                    newUser.password = hash;
-                    newUser.save()
-                    .then(newuser => res.json(newuser))
-                    .then(console.log("New Account Created."))
-                    .catch(err => console.log(err));
-                })
-            })
         }
     })
-})
+});
 
 // @route POST api/users/login
 // @desc Login user and return JWT token
@@ -68,7 +99,9 @@ router.post("/login", (req, res) => {
                 // Found a match, create JWT payload
                 const payload = {
                     id: user.id,
-                    name: user.name
+                    name: user.name,
+                    email: user.email,
+                    access: user.access
                 };
 
                 jwt.sign(
@@ -82,7 +115,7 @@ router.post("/login", (req, res) => {
                             success: true,
                             token: "Bearer " + token
                         })
-                        .then(console.log("New Account Created.")
+                        .then(console.log("Logged in to account.")
                         );
                     }
                 );

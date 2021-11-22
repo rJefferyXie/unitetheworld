@@ -7,12 +7,14 @@ import { Link } from "react-router-dom";
 
 const Account = (props) => (
   <tr>
-    <td>{props.account.username}</td>
-    <td>{props.account.email}</td>
-    <td>{props.account.password}</td>
+    <td>{props.user.name}</td>
+    <td>{props.user.email}</td>
+    <td>{props.user.access}</td>
     <td>
-      <Link to={"/edit/" + props.account._id}>Edit</Link> |
-      <a href="/summary" onClick={() => { props.deleteaccount(props.account._id); }}>Delete</a>
+      <Link to={"/edit/" + props.user._id}>Edit</Link> |
+      <a href="/dashboard/" onClick={() => {props.deleteAccount(props.user._id)}}>
+        Delete
+      </a>
     </td>
   </tr>
 );
@@ -21,14 +23,14 @@ export default class AccountList extends Component {
   // This is the constructor that shall store our data retrieved from the database
   constructor(props) {
     super(props);
-    this.deleteaccount = this.deleteaccount.bind(this);
+    this.deleteAccount = this.deleteAccount.bind(this);
     this.state = { accounts: [] };
   }
 
   // This method will get the data from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/account/")
+      .get("/api/users/summary")
       .then((response) => {
         this.setState({ accounts: response.data });
       })
@@ -38,8 +40,8 @@ export default class AccountList extends Component {
   }
 
   // This method will delete a account based on the method
-  deleteaccount(id) {
-    axios.delete("http://localhost:5000/" + id).then((response) => {
+  deleteAccount(id) {
+    axios.delete("/api/users/" + id).then((response) => {
       console.log(response.data);
     })
 
@@ -53,36 +55,32 @@ export default class AccountList extends Component {
     return this.state.accounts.map((currentaccount) => {
       return (
         <Account
-          account={currentaccount}
-          deleteaccount={this.deleteaccount}
+          user={currentaccount}
+          deleteAccount={this.deleteAccount}
           key={currentaccount._id}
         />
       );
     });
   }
 
-  showInfo() {
-    axios.get("http://localhost:5000/account").then((res) => console.log(res.data));
-  }
-
   // This following section will display the table with the accounts of individuals.
   render() {
     return (
       <div className="AccountList flex">
-        <h3>Account List</h3>
-        <table className="AccountList-table">
-          <thead>
-            <tr>
-              <th className="table-item">Username</th>
-              <th className="table-item">Email Address</th>
-              <th className="table-item">Password</th>
-              <th className="table-item">Action</th>
-            </tr>
-          </thead>
-          <tbody>{this.accountList()}</tbody>
-        </table>
-        <a href="/create">Create Account</a>
-        <button className="Form-item Form-button" onClick={this.showInfo}>Show Info</button>
+        <div className="AccountList-container flex">
+          <h3>Account List</h3>
+          <table className="AccountList-table">
+            <thead>
+              <tr>
+                <th className="table-item">Username</th>
+                <th className="table-item">Email Address</th>
+                <th className="table-item">Access</th>
+                <th className="table-item">Action</th>
+              </tr>
+            </thead>
+            <tbody>{this.accountList()}</tbody>
+          </table>
+        </div>
       </div>
     );
   }
