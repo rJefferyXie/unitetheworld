@@ -1,7 +1,6 @@
 import '../App.css';
 import './CreateAccount.css';
 
-import {validEmail, validPassword} from '../regex.js'
 import React, { Component } from "react";
 import axios from 'axios';
  
@@ -40,20 +39,6 @@ export default class CreateAccount extends Component {
     });
   }
 
-  emailValidation(email) {
-    if (!validEmail.test(email)) {
-        return false;
-    }
-    return true;
-  }
-
-  passwordValidation(password) {
-    if (!validPassword.test(password)) {
-      return false;
-    }
-    return true;
-  }
-
   cancel() {
     document.location.pathname = "/summary";
   }
@@ -68,16 +53,6 @@ export default class CreateAccount extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-
-    if (!this.emailValidation(newaccount.email)) {
-      alert("Email invalid.");
-      return;
-    }
-
-    if (!this.passwordValidation(newaccount.password)) {
-      alert("Password invalid.");
-      return;
-    }
  
     axios
       .post("http://localhost:5000/account/add", newaccount)
@@ -103,7 +78,7 @@ export default class CreateAccount extends Component {
           <input className="Form-item" type="text" value={this.state.password} placeholder="Password" onChange={this.onChangeAccountPassword}/>
           <div className="Button-container flex">
             <button className="Form-item Form-button" type="reset"onClick={this.cancel}>Cancel</button>
-            <button className="Form-item Form-button" type="submit">Create</button>
+            <button className="Form-item Form-button" type="submit">Update</button>
           </div>
         </form>
       </div>
