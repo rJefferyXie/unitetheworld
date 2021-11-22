@@ -8,9 +8,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
-import { connect, connet } from "react-redux";
+import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
-import classNames from "classnames";
+import classnames from "classnames";
 
 class Login extends Component {
     constructor() {
@@ -24,7 +24,7 @@ class Login extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-            document.location.pathname = "/";
+            document.location.pathname = "/dashboard";
         }
 
         if (nextProps.errors) {
@@ -67,17 +67,19 @@ class Login extends Component {
                     <div className="Login-email">
                         <label>Email</label>
                         <div className="Login-item">
-                            <input id="email" className="Login-input" type="email" placeholder="Email" onChange={this.onChange} value={this.state.email} error={errors.email}/>
+                            <input id="email" className={classnames("Login-input", {invalid: errors.email || errors.emailnotfound})} type="email" placeholder="Email" onChange={this.onChange} value={this.state.email} error={errors.email}/>
                             <FontAwesomeIcon className="Login-icon" icon={faUser}/>
                         </div>
+                        <span>{errors.email}{errors.emailnotfound}</span>
                     </div>
     
                     <div className="Login-password">
                         <label>Password</label>
                         <div className="Login-item">
-                            <input id="password" className="Login-input" type="password" placeholder="Password" onChange={this.onChange} value={this.state.password} error={errors.password}/>
+                            <input id="password" className={classnames("Login-input", {invalid: errors.password || errors.passwordincorrect})} type="password" placeholder="Password" onChange={this.onChange} value={this.state.password} error={errors.password}/>
                             <FontAwesomeIcon className="Login-icon" icon={faLock}/>
                         </div>
+                        <span>{errors.password}{errors.passwordincorrect}</span>
                     </div>
     
                     <div className="Button-container flex">

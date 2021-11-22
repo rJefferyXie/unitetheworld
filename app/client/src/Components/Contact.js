@@ -23,7 +23,7 @@ const Contact = (props) => {
         alert(JSON.stringify(data))
     }
 
-    const cancel = () => { document.location.pathname = "/summary"; }
+    const cancel = () => { window.location.pathname = "/summary"; }
 
     return (
         <div className="Contact flex">

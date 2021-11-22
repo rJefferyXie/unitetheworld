@@ -40,7 +40,7 @@ export default class CreateAccount extends Component {
   }
 
   cancel() {
-    document.location.pathname = "/summary";
+    window.location.pathname = "/summary";
   }
  
   // This function will handle the submission.
@@ -57,7 +57,7 @@ export default class CreateAccount extends Component {
     axios
       .post("http://localhost:5000/account/add", newaccount)
       .then((res) => console.log(res.data))
-      .then(document.location.pathname = "/summary");
+      .then(window.location.pathname = "/summary");
  
     // We will empty the state after posting the data to the database
     this.setState({

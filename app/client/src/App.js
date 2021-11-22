@@ -13,12 +13,31 @@ import AccountList from './components/AccountList';
 
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/private-route/PrivateRoute';
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "./store";
+import jwt_decode from "jwt-decode";
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+
+if (localStorage.jwtToken) {
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  const decodedToken = jwt_decode(token);
+  store.dispatch(setCurrentUser(decodedToken));
+
+  // Check if token has expired
+  const currentTime = Date.now() / 1000;
+  if (decodedToken.exp < currentTime) {
+    store.dispatch(logoutUser());
+    window.location.href = "./login";
+  }
+}
 
 function App() {
   return (
@@ -36,6 +55,10 @@ function App() {
             <Route path="/login" element={<Login/>}></Route>
             <Route path="/edit/:id" element={<EditAccount/>}></Route>
             <Route path="/summary" element={<AccountList/>}></Route>
+
+            <Route path="/dashboard" element={<PrivateRoute/>}>
+              <Route path="" element={<Dashboard/>}></Route>
+            </Route>
           </Routes>
         </Router>
       </Provider>

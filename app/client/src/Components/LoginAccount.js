@@ -12,7 +12,7 @@ const LoginAccount = () => {
     const passwordRef = useRef(null);
 
     const cancel = () => {
-        document.location.pathname = "/account";
+        window.location.pathname = "/account";
     }
 
     const submit = (e) => {

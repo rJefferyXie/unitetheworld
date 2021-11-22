@@ -58,7 +58,7 @@ export default class EditAccount extends Component {
   }
 
   cancel() {
-    document.location.pathname = "/summary";
+    window.location.pathname = "/summary";
   }
  
   // This function will handle the submission.
@@ -78,7 +78,7 @@ export default class EditAccount extends Component {
         newEditedperson
       )
       .then((res) => console.log(res.data))
-      .then(document.location.pathname = "/summary");
+      .then(window.location.pathname = "/summary");
  
   }
  
