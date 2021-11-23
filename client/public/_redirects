@@ -1,2 +1,2 @@
-/api/users*  https://unitetheworld.herokuapp.com/ 200
+/api/*  https://unitetheworld.herokuapp.com/api/:splat  200
 /* /index.html 200
