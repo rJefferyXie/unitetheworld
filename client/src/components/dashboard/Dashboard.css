@@ -62,10 +62,10 @@
 tr td
 {
     background-color: #fff;
+    text-align: left;
 }
 
-tr:nth-child(even) td:nth-child(odd), 
-tr:nth-child(even) td:nth-child(even)
+tr:nth-child(even) td:nth-child(odd), tr:nth-child(even) td:nth-child(even)
 {
     background-color: #dddddd;
 }
