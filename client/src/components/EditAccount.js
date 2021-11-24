@@ -114,51 +114,48 @@ class EditAccount extends Component {
     return (
       <div className="Edit flex">
         <form className="Edit-form flex" onSubmit={this.onSubmit}>
-          <h3>Update account</h3>
-          <div className="Edit-form-container flex">
-            <div className="Edit-container flex">
-              <div className="Edit-info flex">
+          <div className="Edit-container flex">
+            <div className="Edit-info flex">
               <h3 className="user-header">User Account Details</h3>
-                <div className="info-item" type="text">Username: {this.state.name}</div>
-                  <div className="info-item" type="text">Email: {this.state.email}</div>
-                  <div className="info-item" type="number">Rating: {((this.state.rating / (this.state.events.length * 5)) * 5).toFixed(2)}</div>
-                  <div className="info-item" type="text" value={this.state.access}>Access Level: {this.state.access}</div>
-                    <div className="EventList-container">
-                      <table className="EventList-table">
-                          <thead>
-                              <tr>
-                                  <th className="table-item">Event Name</th>
-                                  <th className="table-item">Event Location</th>
-                                  <th className="table-item">Rating</th>
-                              </tr>
-                          </thead>
-                          <tbody>{this.eventList()}</tbody>
-                      </table>  
-                    </div>               
-                  </div>
-                <div className="Edit-info flex">
-                  <div className="event-container flex">
-                    <h3 className="edit-header">Add New Event</h3>
-                    <input id="eventname" className="Event-item" type="text" value={this.state.eventname} placeholder="Event Name" onChange={this.onChangeEvents}></input>
-                    <input id="eventlocation" className="Event-item" type="text" value={this.state.eventlocation} placeholder="Event Location" onChange={this.onChangeEvents}></input>
-                    <input id="eventrating" className="Event-item" type="number" min="1" max="5" value={this.state.eventrating} placeholder="Rating: (1-5)" onChange={this.onChangeEvents}></input>
-                    <button className="Event-item Event-Button" type="button" onClick={this.addNewEvent}>Add New Event</button>
-                  </div>
-                  <div className="access-container flex">
-                    <h3 className="edit-header">Change User Access Level</h3>
-                    <div className="Radio-button-container flex">
-                      <input type="radio" name="access" className="Radio-button" value="Admin" onChange={this.onChangeAccess}></input>
-                      <label>Admin</label>
-                      <input type="radio" name="access" className="Radio-button" value="User" onChange={this.onChangeAccess}></input>
-                      <label>User</label>
-                    </div>
-                  </div>
+              <div className="info-item" type="text">Username: {this.state.name}</div>
+                <div className="info-item" type="text">Email: {this.state.email}</div>
+                <div className="info-item" type="number">Rating: {((this.state.rating / (this.state.events.length * 5)) * 5).toFixed(2)}</div>
+                <div className="info-item" type="text" value={this.state.access}>Access Level: {this.state.access}</div>
+                  <div className="EventList-container flex">
+                    <table className="EventList-table">
+                        <thead>
+                            <tr>
+                                <th className="table-item">Event Name</th>
+                                <th className="table-item">Event Location</th>
+                                <th className="table-item">Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>{this.eventList()}</tbody>
+                    </table>  
+                  </div>   
+                  <div className="Button-container flex">
+                    <button className="Edit-item flex Edit-button cancel" type="reset" onClick={this.cancel}>Cancel</button>
+                    <button className="Edit-item flex Edit-button update" type="submit">Update</button>
+                  </div>            
               </div>
+              <div className="Edit-info flex">
+                <div className="event-container flex">
+                  <h3 className="edit-header">Add New Event</h3>
+                  <input id="eventname" className="Event-item" type="text" value={this.state.eventname} placeholder="Event Name" onChange={this.onChangeEvents}></input>
+                  <input id="eventlocation" className="Event-item" type="text" value={this.state.eventlocation} placeholder="Event Location" onChange={this.onChangeEvents}></input>
+                  <input id="eventrating" className="Event-item" type="number" min="1" max="5" value={this.state.eventrating} placeholder="Rating: (1-5)" onChange={this.onChangeEvents}></input>
+                  <button className="Event-item Event-Button" type="button" onClick={this.addNewEvent}>Add New Event</button>
+                </div>
+                <div className="access-container flex">
+                  <h3 className="edit-header">Change User Access Level</h3>
+                  <div className="Radio-button-container flex">
+                    <input type="radio" name="access" className="Radio-button" value="Admin" onChange={this.onChangeAccess}></input>
+                    <label>Admin</label>
+                    <input type="radio" name="access" className="Radio-button" value="User" onChange={this.onChangeAccess}></input>
+                    <label>User</label>
+                  </div>
+                </div>
             </div>
-          </div>
-          <div className="Button-container flex">
-            <button className="Edit-item flex Edit-button cancel" type="reset" onClick={this.cancel}>Cancel</button>
-            <button className="Edit-item flex Edit-button update" type="submit">Update</button>
           </div>
         </form>
       </div>
