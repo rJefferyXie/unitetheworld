@@ -20,9 +20,15 @@ class Login extends Component {
         };
     }
 
+    componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+            window.location.pathname = "/dashboard";
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-            document.location.pathname = "/dashboard";
+            window.location.pathname = "/dashboard";
         }
 
         if (nextProps.errors) {
@@ -30,11 +36,7 @@ class Login extends Component {
                 errors: nextProps.errors
             });
         }
-    }
-
-    cancel() {
-        document.location.pathname = "/summary";
-    }    
+    }  
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
@@ -49,10 +51,6 @@ class Login extends Component {
         }
     
         this.props.loginUser(userData);
-    }
-
-    cancel = () => {
-        document.location.pathname = "/account";
     }
 
     render() {

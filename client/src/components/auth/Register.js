@@ -22,17 +22,19 @@ class Register extends Component {
       };
     }
 
+    componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+            window.location.pathname = "/dashboard";
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
             });
         }
-    }
-
-    cancel() {
-        document.location.pathname = "/summary";
-    }    
+    }  
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });

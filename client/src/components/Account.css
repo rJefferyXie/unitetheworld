@@ -5,8 +5,8 @@
 }
 
 .Account-container {
-    width: 80%;
-    height: 80%;
+    width: min(80%, 720px);
+    height: min(80%, 480px);
     flex-direction: column;
     justify-content: center;
     align-items: center;

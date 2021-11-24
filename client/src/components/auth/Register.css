@@ -6,8 +6,8 @@
 
 .Register-form {
     flex-direction: column;
-    width: 80%;
-    height: 80%;
+    width: min(80%, 720px);
+    height: min(80%, 480px);
     background-color: white;
     border-radius: 6px;
 }
