@@ -67,7 +67,7 @@ class Dashboard extends Component {
                     <div className="Dashboard-container flex">
                         <AccountList className="AccountList"></AccountList>
                         <div className="User-info-container flex">
-                            <h3>Your Account Details</h3>
+                            <h3 className="user-header">Your Account Details</h3>
                             <label className="info-item">Username: {user.name}</label>
                             <label className="info-item">Email: {user.email}</label>
                             <label className="info-item">Rating: {((user.rating / (user.events.length * 5)) * 5).toFixed(2)}</label>

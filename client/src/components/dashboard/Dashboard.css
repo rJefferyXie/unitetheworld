@@ -15,6 +15,10 @@
 .User-info-container {
     flex-direction: column;
     width: 40%;
+    height: 100%;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .info-item {
@@ -24,7 +28,8 @@
 
 .AccountList {
     width: 60%;
-    height: 80%;
+    height: 100%;
+    border: 1px solid black;
 }
 
 .Event-list {
@@ -39,7 +44,7 @@
 .EventList-table {
     width: 90%;
     text-align: center;
-    margin: 20px 0px 20px 0px;
+    margin: 10px 0px 10px 0px;
     border: 1px solid black;
 }
 
