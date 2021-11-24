@@ -6,7 +6,6 @@ import About from './components/About'
 import Donation from './components/Donation';
 import Contact from './components/Contact';
 import EditAccount from './components/EditAccount';
-import AccountList from './components/AccountList';
 
 import Account from './components/Account';
 import Register from './components/auth/Register';
@@ -50,7 +49,6 @@ function App() {
             <Route path="/account" element={<Account/>}></Route>
             <Route path="/register" element={<Register/>}></Route>
             <Route path="/edit/:id" element={<EditAccount/>}></Route>
-            <Route path="/summary" element={<AccountList/>}></Route>
 
             <Route path="" element={<PrivateRoute/>}>
               <Route path="/dashboard" element={<Dashboard/>}></Route>
