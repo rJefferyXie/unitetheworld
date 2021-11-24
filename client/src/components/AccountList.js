@@ -17,14 +17,14 @@ const Account = (props) => (
   </tr>
 );
 
-const AdminAccount = (props) => (
-  <tr>
-    <td>{props.user.name}</td>
-    <td>{props.user.email}</td>
-    <td>{props.user.access}</td>
-    <td></td>
-  </tr>
-);
+// const AdminAccount = (props) => (
+//   <tr>
+//     <td>{props.user.name}</td>
+//     <td>{props.user.email}</td>
+//     <td>{props.user.access}</td>
+//     <td></td>
+//   </tr>
+// );
 
 export default class AccountList extends Component {
   // This is the constructor that shall store our data retrieved from the database
@@ -60,15 +60,15 @@ export default class AccountList extends Component {
   // This method will map out the users on the table
   accountList() {
     return this.state.accounts.map((currentaccount) => {
-      if (currentaccount.access === "Admin") {
-        return (
-          <AdminAccount
-            user={currentaccount}
-            key={currentaccount._id}
-          />
-        );
-      } 
-      else {
+      // if (currentaccount.access === "Admin") {
+      //   return (
+      //     <AdminAccount
+      //       user={currentaccount}
+      //       key={currentaccount._id}
+      //     />
+      //   );
+      // } 
+      // else {
         return (
           <Account
             user={currentaccount}
@@ -76,7 +76,7 @@ export default class AccountList extends Component {
             key={currentaccount._id}
           />
         );
-      }
+      // }
     });
   }
 

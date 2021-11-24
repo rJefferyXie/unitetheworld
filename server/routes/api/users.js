@@ -38,7 +38,7 @@ router.get("/user/:id", (req, res) => {
 // @access Private
 router.delete("/delete/:id", (req, res) => {
     User.deleteOne({_id: req.params.id}, (err, result) => {
-        if (err) { throw err }
+        if (err) { throw err };
         console.log("User removed from database.");
     });
 });
@@ -50,15 +50,17 @@ router.post("/edit/:id", (req, res) => {
     let myquery = { _id: ObjectId( req.params.id )};
     let newValues = {
         $set: {
-            access: req.body.access
+            access: req.body.access,
+            events: req.body.events,
+            rating: req.body.rating
         }
-    }
+    };
     User.updateOne(myquery, newValues, (err, user) => {
         if (err) { throw err }
         console.log("User updated.");
         res.json(user);
-    })
-})
+    });
+});
 
 // @route POST api/users/register
 // @desc Register new user
@@ -128,7 +130,9 @@ router.post("/login", (req, res) => {
                     id: user.id,
                     name: user.name,
                     email: user.email,
-                    access: user.access
+                    access: user.access,
+                    events: user.events,
+                    rating: user.rating
                 };
 
                 jwt.sign(

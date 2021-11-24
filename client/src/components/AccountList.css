@@ -4,16 +4,19 @@
 }
 
 .AccountList-container {
+    width: 100%;
     flex-direction: column;
     background-color: white;
 }
 
 .AccountList-table {
-    width: 100%;
-    text-align: left;
+    width: 90%;
+    text-align: center;
     margin-top: 20px;
+    border: 1px solid black;
 }
 
 .table-item {
-    width: 100px;
+    width: 150px;
+    border: 1px solid black;
 }

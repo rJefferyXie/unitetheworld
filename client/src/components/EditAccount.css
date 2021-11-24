@@ -7,35 +7,88 @@
 
 .Edit-form {
     flex-direction: column;
-    width: min(80%, 720px);
-    height: min(80%, 480px);
+    width: 60%;
+    height: 60%;
     border-radius: 16px;
     background-color: white;
 }
 
-.Radio-button-container {
-    height: 48px;
+.Edit-form-container {
+    width: 80%;
+    height: 80%;
+    flex-direction: column;
+}
+
+.Edit-container {
+    width: 100%;
+    height: 100%;
+}
+
+.Edit-info {
+    flex-direction: column;
+    margin: auto;
     width: 50%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.Radio-button-container {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.Radio-button {
+    margin: 0px 0px 0px 10px;
 }
 
 .Edit-item {
+    flex-direction: column;
     outline: none;
     border-radius: 3px;
-    width: 50%;
+    width: 300px;
+    height: 20px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.Event-item {
+    width: 250px;
+    height: 50px;
+}
+
+.EventList-container {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.Event-list {
+    border: 1px solid black;
+    border-radius: 6px;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .Edit-button {
-    background-color: rgb(52, 202, 84);
     width: 50%;
     height: 48px;
     border-radius: 3px;
     font-size: 1rem;
     color: aliceblue;
-    background-color: rgb(34, 100, 199);
     text-align: center;
     outline: none;
     text-decoration: none;
     cursor: pointer;
     border: none;
     padding: 10px 30px 10px 30px;
+    margin: 0px 10px 0px 10px;
+}
+
+.cancel {
+    background-color: rgb(34, 100, 199);
+}
+
+.update {
+    background-color: rgb(52, 202, 84);
 }

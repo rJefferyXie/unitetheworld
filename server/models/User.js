@@ -14,6 +14,11 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    events: [[String]],
+    rating: {
+        type: Number,
+        default: 0
+    },
     access: {
         type: String,
         default: "User"
