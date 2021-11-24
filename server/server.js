@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
 const users = require("./routes/api/users");
+// const posts = require("./routes/api/posts");
 
 const db = require("./config/keys").ATLAS_URI;
 const port = process.env.PORT || 5000;
@@ -23,6 +24,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(passport.initialize());
 require("./config/passport")(passport);
 
+// app.use("/api/posts", posts);
 app.use("/api/users", users);
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
