@@ -8,6 +8,8 @@ const keys = require("../../config/keys")
 const validateUserRegister = require("../../validation/register");
 const validateUserLogin = require("../../validation/login");
 
+const ObjectId = require("mongodb").ObjectId;
+
 // Load user model
 const User = require("../../models/User");
 
@@ -21,17 +23,42 @@ router.get("/summary", (req, res) => {
     });
 });
 
-// @route DELETE api/users/:id
+// @route GET api/users/user/:id
+// @desc Get user account
+// @access Private
+router.get("/user/:id", (req, res) => {
+    User.findById({_id: req.params.id}, (err, user) => {
+        if (err) { throw err }
+        res.json(user);
+    })
+})
+
+// @route DELETE api/users/delete/:id
 // @desc Delete user account
 // @access Private
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
     User.deleteOne({_id: req.params.id}, (err, result) => {
         if (err) { throw err }
         console.log("User removed from database.");
     });
 });
 
-
+// @route POST api/users/edit/:id
+// @desc Edit user account
+// @access Private
+router.post("/edit/:id", (req, res) => {
+    let myquery = { _id: ObjectId( req.params.id )};
+    let newValues = {
+        $set: {
+            access: req.body.access
+        }
+    }
+    User.updateOne(myquery, newValues, (err, user) => {
+        if (err) { throw err }
+        console.log("User updated.");
+        res.json(user);
+    })
+})
 
 // @route POST api/users/register
 // @desc Register new user

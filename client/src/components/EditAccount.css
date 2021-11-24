@@ -1,21 +1,41 @@
 .Edit {
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
-    flex-direction: column;
+    background-color: rgb(247, 247, 247);
 }
 
 .Edit-form {
     flex-direction: column;
-    width: 80%;
-    height: 80%;
-    background-color: rgb(196, 233, 255);
+    width: min(80%, 720px);
+    height: min(80%, 480px);
     border-radius: 16px;
+    background-color: white;
 }
 
-/* .Form-item {
-    margin: 10px;
-    padding: 10px 20px 10px 20px;
-    border-radius: 6px;
-    border: 1px solid white;
+.Radio-button-container {
+    height: 48px;
+    width: 50%;
+}
+
+.Edit-item {
     outline: none;
-} */
+    border-radius: 3px;
+    width: 50%;
+}
+
+.Edit-button {
+    background-color: rgb(52, 202, 84);
+    width: 50%;
+    height: 48px;
+    border-radius: 3px;
+    font-size: 1rem;
+    color: aliceblue;
+    background-color: rgb(34, 100, 199);
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 10px 30px 10px 30px;
+}

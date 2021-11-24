@@ -4,33 +4,29 @@ import './EditAccount.css';
 import React, { Component } from "react";
 import axios from 'axios';
  
-export default class EditAccount extends Component {
+class EditAccount extends Component {
   // This is the constructor that stores the data.
   constructor(props) {
     super(props);
- 
-    this.onChangeAccountName = this.onChangeAccountName.bind(this);
-    this.onChangeAccountEmail = this.onChangeAccountEmail.bind(this);
-    this.onChangeAccountPassword = this.onChangeAccountPassword.bind(this);
+    this.propID = window.location.pathname.replace("/edit/", ""); 
+    this.onChangeAccess = this.onChangeAccess.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.propID = window.location.pathname.replace("/edit/", "");
- 
+
     this.state = {
-      username: "",
+      name: "",
       email: "",
-      password: "",
-      accounts: [],
+      access: ""
     };
   }
   // This will get the account based on the id from the database.
   componentDidMount() {
     axios
-      .get("http://localhost:5000/account/" + this.propID)
+      .get("/api/users/user/" + this.propID)
       .then((response) => {
         this.setState({
-          username: response.data.username,
+          name: response.data.name,
           email: response.data.email,
-          password: response.data.password,
+          access: response.data.access
         });
       })
       .catch(function (error) {
@@ -38,48 +34,28 @@ export default class EditAccount extends Component {
       });
   }
  
-  // These methods will update the state properties.
-  onChangeAccountName(e) {
-    this.setState({
-      username: e.target.value,
-    });
-  }
- 
-  onChangeAccountEmail(e) {
-    this.setState({
-      email: e.target.value,
-    });
-  }
- 
-  onChangeAccountPassword(e) {
-    this.setState({
-      password: e.target.value,
-    });
+  onChangeAccess = e => {
+    this.setState({access: e.target.value})
   }
 
   cancel() {
-    window.location.pathname = "/summary";
+    window.location.pathname = "/dashboard";
   }
  
   // This function will handle the submission.
   onSubmit(e) {
     e.preventDefault();
-    const newEditedperson = {
-      username: this.state.username,
+    const newEditedUser = {
+      name: this.state.name,
       email: this.state.email,
-      password: this.state.password,
+      access: this.state.access
     };
-    console.log(newEditedperson);
  
     // This will send a post request to update the data in the database.
     axios
-      .post(
-        "http://localhost:5000/update/" + this.propID,
-        newEditedperson
-      )
+      .post("/api/users/edit/" + this.propID, newEditedUser)
       .then((res) => console.log(res.data))
-      .then(window.location.pathname = "/summary");
- 
+      .then(window.location.pathname = "/dashboard");
   }
  
   // This following section will display the update-form that takes the input from the user to update the data.
@@ -87,16 +63,24 @@ export default class EditAccount extends Component {
     return (
       <div className="Edit flex">
         <form className="Edit-form flex" onSubmit={this.onSubmit}>
-          <h3 align="center">Update account</h3>
-          <input className="Form-item" type="text" value={this.state.username} placeholder="Username" onChange={this.onChangeAccountName}/>
-          <input className="Form-item" type="text" value={this.state.email} placeholder="Email" onChange={this.onChangeAccountEmail}/>
-          <input className="Form-item" type="text" value={this.state.password} placeholder="Password" onChange={this.onChangeAccountPassword}/>
+          <h3>Update account</h3>
+          <div className="Edit-item" type="text">Username: {this.state.name}</div>
+          <div className="Edit-item" type="text">Email: {this.state.email}</div>
+          <div className="Edit-item" type="text" value={this.state.access}>Access Level: {this.state.access}</div>
+          <div className="Radio-button-container flex">
+            <input type="radio" name="access" className="Radio-button" value="Admin" onChange={this.onChangeAccess}></input>
+            <label>Admin</label>
+            <input type="radio" name="access" className="Radio-button" value="User" onChange={this.onChangeAccess}></input>
+            <label>User</label>
+          </div>
           <div className="Button-container flex">
-            <button className="Form-item Form-button" onClick={this.cancel}>Cancel</button>
-            <button className="Form-item Form-button" type="submit">Update</button>
+            <button className="Edit-item Edit-button" type="reset" onClick={this.cancel}>Cancel</button>
+            <button className="Edit-item Edit-button" type="submit">Update</button>
           </div>
         </form>
       </div>
     );
   }
 }
+
+export default EditAccount;

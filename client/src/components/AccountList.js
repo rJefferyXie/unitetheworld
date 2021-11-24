@@ -10,12 +10,19 @@ const Account = (props) => (
     <td>{props.user.name}</td>
     <td>{props.user.email}</td>
     <td>{props.user.access}</td>
-    <td>
-      <Link to={"/edit/" + props.user._id}>Edit</Link> |
-      <a href="/dashboard/" onClick={() => {props.deleteAccount(props.user._id)}}>
-        Delete
-      </a>
+    <td className="Actions">
+      <Link to={"/edit/" + props.user._id}>Edit</Link> | 
+      <a href="/dashboard/" onClick={() => {props.deleteAccount(props.user._id)}}> Delete</a>
     </td>
+  </tr>
+);
+
+const AdminAccount = (props) => (
+  <tr>
+    <td>{props.user.name}</td>
+    <td>{props.user.email}</td>
+    <td>{props.user.access}</td>
+    <td></td>
   </tr>
 );
 
@@ -41,7 +48,7 @@ export default class AccountList extends Component {
 
   // This method will delete a account based on the method
   deleteAccount(id) {
-    axios.delete("/api/users/" + id).then((response) => {
+    axios.delete("/api/users/delete/" + id).then((response) => {
       console.log(response.data);
     })
 
@@ -53,13 +60,23 @@ export default class AccountList extends Component {
   // This method will map out the users on the table
   accountList() {
     return this.state.accounts.map((currentaccount) => {
-      return (
-        <Account
-          user={currentaccount}
-          deleteAccount={this.deleteAccount}
-          key={currentaccount._id}
-        />
-      );
+      if (currentaccount.access === "Admin") {
+        return (
+          <AdminAccount
+            user={currentaccount}
+            key={currentaccount._id}
+          />
+        );
+      } 
+      else {
+        return (
+          <Account
+            user={currentaccount}
+            deleteAccount={this.deleteAccount}
+            key={currentaccount._id}
+          />
+        );
+      }
     });
   }
 
