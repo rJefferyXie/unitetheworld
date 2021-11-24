@@ -2,6 +2,8 @@
 
 **NOTE: This was a project for my Full Stack Web Development course.**
 
+Hosted Server Link: https://unitetheworld.netlify.app/
+
 Images:
 * Hero wallpaper: https://unsplash.com/photos/IlE0VAeIBq4
 
