@@ -6,19 +6,24 @@
 }
 
 .Dashboard-container {
-    width: 60%;
-    height: 60%;
+    width: 80%;
+    height: 80%;
     background-color: white;
     border-radius: 16px;
 }
 
-.User-info-container {
+.User-info-container-user {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.User-info-container-admin {
     flex-direction: column;
     width: 40%;
     height: 100%;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
 }
 
 .info-item {
@@ -29,8 +34,9 @@
 .AccountList {
     width: 60%;
     height: 100%;
-    border: 1px solid black;
-}
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;}
 
 .Event-list {
     border: 1px solid black;

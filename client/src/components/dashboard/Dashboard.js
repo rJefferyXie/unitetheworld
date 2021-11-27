@@ -40,20 +40,23 @@ class Dashboard extends Component {
             return (
                 <div className="Dashboard flex">
                     <div className="Dashboard-container flex">
-                        <div className="User-info-container flex">
+                        <div className="User-info-container-user flex">
+                            <h3 className="user-header">Your Account Details</h3>
                             <label className="info-item">Username: {user.name}</label>
                             <label className="info-item">Email: {user.email}</label>
                             <label className="info-item">Rating: {((user.rating / (user.events.length * 5)) * 5).toFixed(2)}</label>
-                            <table className="EventList-table">
-                                <thead>
-                                    <tr>
-                                        <th className="table-item">Event Name</th>
-                                        <th className="table-item">Event Location</th>
-                                        <th className="table-item">Rating</th>
-                                    </tr>
-                                </thead>
-                                <tbody>{this.eventList()}</tbody>
-                            </table>                               
+                            <div className="EventList-container flex">
+                                <table className="EventList-table">
+                                    <thead>
+                                        <tr>
+                                            <th className="table-item">Event Name</th>
+                                            <th className="table-item">Event Location</th>
+                                            <th className="table-item">Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>{this.eventList()}</tbody>
+                                </table>           
+                            </div>                    
                             <button className="Dashboard-button" onClick={this.onLogout}>Logout</button>
                         </div>
                     </div>
@@ -66,22 +69,24 @@ class Dashboard extends Component {
                 <div className="Dashboard flex">
                     <div className="Dashboard-container flex">
                         <AccountList className="AccountList"></AccountList>
-                        <div className="User-info-container flex">
+                        <div className="User-info-container-admin flex">
                             <h3 className="user-header">Your Account Details</h3>
                             <label className="info-item">Username: {user.name}</label>
                             <label className="info-item">Email: {user.email}</label>
                             <label className="info-item">Rating: {((user.rating / (user.events.length * 5)) * 5).toFixed(2)}</label>
                             <label className="info-item">Access Level: {user.access}</label>
-                            <table className="EventList-table">
-                                <thead>
-                                    <tr>
-                                        <th className="table-item">Event Name</th>
-                                        <th className="table-item">Event Location</th>
-                                        <th className="table-item">Rating</th>
-                                    </tr>
-                                </thead>
-                                <tbody>{this.eventList()}</tbody>
-                            </table>                            
+                            <div className="EventList-container flex">
+                                <table className="EventList-table">
+                                    <thead>
+                                        <tr>
+                                            <th className="table-item">Event Name</th>
+                                            <th className="table-item">Event Location</th>
+                                            <th className="table-item">Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>{this.eventList()}</tbody>
+                                </table>
+                            </div>                            
                             <button className="Dashboard-button" onClick={this.onLogout}>Logout</button>
                         </div>
                     </div>

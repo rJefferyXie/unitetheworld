@@ -86,17 +86,19 @@ export default class AccountList extends Component {
       <div className="AccountList flex">
         <div className="AccountList-container flex">
           <h3>Account List</h3>
-          <table className="AccountList-table">
-            <thead>
-              <tr>
-                <th className="table-item">Username</th>
-                <th className="table-item">Email Address</th>
-                <th className="table-item">Access</th>
-                <th className="table-item">Action</th>
-              </tr>
-            </thead>
-            <tbody>{this.accountList()}</tbody>
-          </table>
+          <div className="EventList-container flex">
+            <table className="AccountList-table">
+              <thead>
+                <tr>
+                  <th className="table-item">Username</th>
+                  <th className="table-item">Email Address</th>
+                  <th className="table-item">Access</th>
+                  <th className="table-item">Action</th>
+                </tr>
+              </thead>
+              <tbody>{this.accountList()}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     );

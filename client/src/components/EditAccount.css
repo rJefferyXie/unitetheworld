@@ -7,8 +7,8 @@
 
 .Edit-form {
     flex-direction: column;
-    width: 60%;
-    height: 60%;
+    width: 80%;
+    height: 80%;
     border-radius: 16px;
     background-color: white;
 }
@@ -79,6 +79,7 @@
     height: 300px;
     width: 100%;
     overflow-y: scroll;
+    margin: 0px 0px 10px 0px;
 }
 
 .Event-list {
