@@ -1,0 +1,50 @@
+.AccountDetails {
+    width: 100vw;
+    height: 100vh;
+    align-items: flex-end;
+}
+
+.User-info-container {
+    flex-direction: column;
+    width: 60%;
+    height: calc(100% - 60px);
+    border-left: 1px solid black;
+}
+
+.User-info-container-user {
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+.AccountList-container {
+    width: 40%;
+    height: calc(100% - 60px);
+}
+
+.AccountDetails-button { 
+    width: min(360px, 80%);
+    height: 48px;
+    border-radius: 3px;
+    font-size: 1rem;
+    color: aliceblue;
+    background-color: rgb(34, 100, 199);
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 10px 30px 10px 30px;
+    margin: 0px 10px 0px 10px;
+}
+
+tr td
+{
+    background-color: #fff;
+    text-align: left;
+}
+
+tr:nth-child(even) td:nth-child(odd), tr:nth-child(even) td:nth-child(even)
+{
+    background-color: #dddddd;
+}

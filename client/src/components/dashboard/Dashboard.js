@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import axios from 'axios';
 
 import AccountList from "../AccountList";
 
@@ -31,7 +32,7 @@ class Dashboard extends Component {
               />
             );
         });
-      }
+    }
 
     render() {
         const { user } = this.props.auth;
@@ -40,25 +41,6 @@ class Dashboard extends Component {
             return (
                 <div className="Dashboard flex">
                     <div className="Dashboard-container flex">
-                        <div className="User-info-container-user flex">
-                            <h3 className="user-header">Your Account Details</h3>
-                            <label className="info-item">Username: {user.name}</label>
-                            <label className="info-item">Email: {user.email}</label>
-                            <label className="info-item">Rating: {((user.rating / (user.events.length * 5)) * 5).toFixed(2)}</label>
-                            <div className="EventList-container flex">
-                                <table className="EventList-table">
-                                    <thead>
-                                        <tr>
-                                            <th className="table-item">Event Name</th>
-                                            <th className="table-item">Event Location</th>
-                                            <th className="table-item">Rating</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>{this.eventList()}</tbody>
-                                </table>           
-                            </div>                    
-                            <button className="Dashboard-button" onClick={this.onLogout}>Logout</button>
-                        </div>
                     </div>
                 </div>
             )
@@ -68,7 +50,9 @@ class Dashboard extends Component {
             return (
                 <div className="Dashboard flex">
                     <div className="Dashboard-container flex">
-                        <AccountList className="AccountList"></AccountList>
+                        <div className="Account-info-container flex">
+                            <AccountList className="AccountList"></AccountList>
+                        </div>
                         <div className="User-info-container-admin flex">
                             <h3 className="user-header">Your Account Details</h3>
                             <label className="info-item">Username: {user.name}</label>

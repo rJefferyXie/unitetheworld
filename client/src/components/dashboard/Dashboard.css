@@ -2,12 +2,13 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    justify-content: flex-end;
     background-color: rgb(247, 247, 247);
 }
 
 .Dashboard-container {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: calc(100vh - 60px);
     background-color: white;
     border-radius: 16px;
 }
@@ -23,7 +24,7 @@
     flex-direction: column;
     width: 40%;
     height: 100%;
-    border: 1px solid black;
+    border-left: 1px solid black;
 }
 
 .info-item {
@@ -31,12 +32,11 @@
     width: 90%;
 }
 
-.AccountList {
+.Account-info-container {
+    flex-direction: column;
     width: 60%;
     height: 100%;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;}
+}
 
 .Event-list {
     border: 1px solid black;

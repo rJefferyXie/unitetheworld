@@ -8,8 +8,10 @@ import Contact from './components/Contact';
 import EditAccount from './components/EditAccount';
 
 import Account from './components/Account';
+import AccountDetails from './components/accountdetails/AccountDetails';
 import Register from './components/auth/Register';
-import Dashboard from './components/dashboard/Dashboard';
+import AccountList from './components/AccountList';
+import Posts from './components/posts/Posts'
 import PrivateRoute from './components/private-route/PrivateRoute';
 
 import React from "react";
@@ -21,8 +23,11 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
+var isAuth = false;
+
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
+  isAuth = true;
   setAuthToken(token);
   const decodedToken = jwt_decode(token);
   store.dispatch(setCurrentUser(decodedToken));
@@ -33,12 +38,14 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
     window.location.href = "./account";
   }
+} else {
+  isAuth = false;
 }
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <Navbar props={ isAuth }></Navbar>
       <Provider store={store}>
         <Router>
           <Routes>
@@ -51,7 +58,8 @@ function App() {
             <Route path="/edit/:id" element={<EditAccount/>}></Route>
 
             <Route path="" element={<PrivateRoute/>}>
-              <Route path="/dashboard" element={<Dashboard/>}></Route>
+              <Route path="/dashboard" element={<Posts/>}></Route>
+              <Route path="/accountdetails" element={<AccountDetails/>}></Route>
             </Route>
           </Routes>
         </Router>

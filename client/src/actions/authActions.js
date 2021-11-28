@@ -59,6 +59,7 @@ export const setUserLoading = () => {
 
 // Log user out
 export const logoutUser = () => dispatch => {
+    window.location.reload();
     localStorage.removeItem("jwtToken");
     setAuthToken(false);
     dispatch(setCurrentUser({}));

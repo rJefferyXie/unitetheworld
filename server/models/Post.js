@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
+    creator: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -14,6 +18,7 @@ const PostSchema = new Schema({
         type: Number,
         required: true
     },
+    participants: [String],
     date: {
         type: Date,
         default: Date.now()

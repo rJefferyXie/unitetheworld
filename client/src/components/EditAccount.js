@@ -88,7 +88,7 @@ class EditAccount extends Component {
   }
 
   cancel() {
-    window.location.pathname = "/dashboard";
+    window.location.pathname = "/accountdetails";
   }
  
   // This function will handle the submission.
@@ -106,7 +106,7 @@ class EditAccount extends Component {
     axios
       .post("/api/users/edit/" + this.propID, newEditedUser)
       .then((res) => console.log(res.data))
-      .then(window.location.pathname = "/dashboard");
+      .then(window.location.pathname = "/accountdetails");
   }
  
   // This following section will display the update-form that takes the input from the user to update the data.

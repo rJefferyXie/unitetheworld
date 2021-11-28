@@ -1,5 +1,7 @@
 .AccountList {
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .AccountList-container {
@@ -17,4 +19,15 @@
 .table-item {
     width: 150px;
     text-align: left;
+}
+
+tr td
+{
+    background-color: #fff;
+    text-align: left;
+}
+
+tr:nth-child(even) td:nth-child(odd), tr:nth-child(even) td:nth-child(even)
+{
+    background-color: #dddddd;
 }
